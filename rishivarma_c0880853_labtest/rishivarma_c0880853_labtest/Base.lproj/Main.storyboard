@@ -28,6 +28,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Start"/>
+                                <connections>
+                                    <action selector="onStartButtonClicked:" destination="BYZ-38-t0r" eventType="touchDown" id="2b2-Vz-GCu"/>
+                                </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="tWK-Mh-4KE" userLabel="ButtonHzStack">
                                 <rect key="frame" x="132" y="264" width="166" height="34.333333333333371"/>
@@ -36,11 +39,17 @@
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                        <connections>
+                                            <action selector="onFlagButtonClicked:" destination="BYZ-38-t0r" eventType="touchDown" id="qhR-d3-7yt"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogr-6I-PFk" userLabel="PauseButton">
                                         <rect key="frame" x="91" y="0.0" width="75" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                                        <connections>
+                                            <action selector="onPauseButtonClicked:" destination="BYZ-38-t0r" eventType="touchDown" id="AYa-cN-5oS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -106,12 +115,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="buttonFlag" destination="ZxS-ub-z9e" id="tL6-j7-w8R"/>
-                        <outlet property="buttonFlagPauseStack" destination="tWK-Mh-4KE" id="Ptf-Aa-QNw"/>
-                        <outlet property="buttonPause" destination="ogr-6I-PFk" id="n4F-0N-X6K"/>
-                        <outlet property="startButton" destination="kUt-lO-FSh" id="MrJ-Hs-PU9"/>
-                        <outlet property="stopWatch" destination="nwf-dJ-FpQ" id="S89-rA-Ahe"/>
-                        <outlet property="tableFlags" destination="ash-DB-Mph" id="YtB-8d-cR6"/>
+                        <outlet property="buttonFlag" destination="ZxS-ub-z9e" id="1gX-u7-C7L"/>
+                        <outlet property="buttonPause" destination="ogr-6I-PFk" id="jow-YU-oiy"/>
+                        <outlet property="buttonStart" destination="kUt-lO-FSh" id="vR3-Kw-Vsb"/>
+                        <outlet property="labelClock" destination="nwf-dJ-FpQ" id="Lsm-bp-74A"/>
+                        <outlet property="stackButtonsFlagPause" destination="tWK-Mh-4KE" id="g8X-vN-dFF"/>
+                        <outlet property="tableFlags" destination="ash-DB-Mph" id="Hy4-D1-iQp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
