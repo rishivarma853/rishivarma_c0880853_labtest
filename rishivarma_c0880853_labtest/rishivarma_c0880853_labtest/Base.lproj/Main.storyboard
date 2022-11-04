@@ -57,23 +57,23 @@
                                             <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aC1-Y8-jqI">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="aC1-Y8-jqI">
                                                     <rect key="frame" x="16" y="16" width="398" height="12"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-R3-UVu">
-                                                            <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="12"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9w-5Y-pDG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="123.33333333333333" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPw-by-tNb">
-                                                            <rect key="frame" x="41.333333333333329" y="0.0" width="41.333333333333329" height="12"/>
+                                                            <rect key="frame" x="219.33333333333334" y="0.0" width="41.333333333333343" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kw-rx-59I">
-                                                            <rect key="frame" x="82.666666666666657" y="0.0" width="315.33333333333337" height="12"/>
+                                                            <rect key="frame" x="356.66666666666669" y="0.0" width="41.333333333333314" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -105,6 +105,14 @@
                             <constraint firstItem="ash-DB-Mph" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O2W-SP-D1E"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonFlag" destination="ZxS-ub-z9e" id="tL6-j7-w8R"/>
+                        <outlet property="buttonFlagPauseStack" destination="tWK-Mh-4KE" id="Ptf-Aa-QNw"/>
+                        <outlet property="buttonPause" destination="ogr-6I-PFk" id="n4F-0N-X6K"/>
+                        <outlet property="startButton" destination="kUt-lO-FSh" id="MrJ-Hs-PU9"/>
+                        <outlet property="stopWatch" destination="nwf-dJ-FpQ" id="S89-rA-Ahe"/>
+                        <outlet property="tableFlags" destination="ash-DB-Mph" id="YtB-8d-cR6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
