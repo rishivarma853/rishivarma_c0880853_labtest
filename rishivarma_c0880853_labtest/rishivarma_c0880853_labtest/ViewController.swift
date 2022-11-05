@@ -15,7 +15,7 @@ struct Flag {
 
 enum State {
     case Play
-    case Pause
+    case Reset
     case Stop
 }
 
@@ -23,10 +23,10 @@ class ViewController: UIViewController {
 
     
     @IBOutlet weak var labelClock: UILabel!
-    @IBOutlet weak var buttonStart: UIButton!
     @IBOutlet weak var stackButtonsFlagPause: UIStackView!
-    @IBOutlet weak var buttonFlag: UIButton!
-    @IBOutlet weak var buttonPause: UIButton!
+
+    @IBOutlet weak var buttonLeft: UIButton!
+    @IBOutlet weak var buttonRight: UIButton!
     @IBOutlet weak var tableFlags: UITableView!
     
     private var flags: [Flag] = []
@@ -36,17 +36,35 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        curState = .Reset
+        buttonLeft.setTitle("Start", for: .normal)
+        buttonRight.setTitle("Lap", for: .normal)
+        stackButtonsFlagPause.isHidden = false
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func onStartButtonClicked(_ sender: Any) {
-        timerStart()
-        buttonStart.isHidden = true
-        stackButtonsFlagPause.isHidden = false
-        curState = .Play
-    }
+//    @IBAction func onStartButtonClicked(_ sender: Any) {
+//        timerStart()
+//        buttonStart.isHidden = true
+//        stackButtonsFlagPause.isHidden = false
+//        curState = .Play
+//    }
     
-    @IBAction func onFlagButtonClicked(_ sender: Any) {
+    
+    @IBAction func onLeftButtonClicked(_ sender: Any) {
+        if curState == .Reset {
+            buttonLeft.setTitle("Stop", for: .normal)
+            buttonRight.setTitle("Lap", for: .normal)
+            timerStart()
+            curState = .Play
+        } else if curState == .Play {
+            onPause()
+        } else if curState == .Stop {
+            onPlay()
+        }
+    }
+ 
+    @IBAction func onRightButtonClicked(_ sender: Any) {
         if curState == .Play {
             var timeGap = 0
             if let firstRow = flags.first {
@@ -54,36 +72,55 @@ class ViewController: UIViewController {
             }
             flags.insert(Flag(index: flags.count, timeDiff: timeGap, flagTime: timeElapsed), at: 0)
         } else {
-            // Click on Stop button
-            endTimer()
+            timerEnd()
             timeElapsed = 0
-            buttonStart.isHidden = false
-            stackButtonsFlagPause.isHidden = true
-            curState = .Stop
+            buttonLeft.setTitle("Start", for: .normal)
+            buttonRight.setTitle("Lap", for: .normal)
+            curState = .Reset
             labelClock.text = "00:00:00"
             flags.removeAll()
         }
-        
         tableFlags.reloadData()
-
     }
     
-    @IBAction func onPauseButtonClicked(_ sender: Any) {
-        if curState == .Play{
-            onPause()
-        } else {
-            onPlay()
-        }
-    }
+//    @IBAction func onFlagButtonClicked(_ sender: Any) {
+//        if curState == .Play {
+//            var timeGap = 0
+//            if let firstRow = flags.first {
+//                timeGap = timeElapsed - firstRow.timeDiff
+//            }
+//            flags.insert(Flag(index: flags.count, timeDiff: timeGap, flagTime: timeElapsed), at: 0)
+//        } else {
+//            // Click on Stop button
+//            timerEnd()
+//            timeElapsed = 0
+//            buttonStart.isHidden = false
+//            stackButtonsFlagPause.isHidden = true
+//            curState = .Stop
+//            labelClock.text = "00:00:00"
+//            flags.removeAll()
+//        }
+//
+//        tableFlags.reloadData()
+//
+//    }
+    
+//    @IBAction func onPauseButtonClicked(_ sender: Any) {
+//        if curState == .Play{
+//            onPause()
+//        } else {
+//            onPlay()
+//        }
+//    }
     
     func onPlay() {
         timerStart()
         
-        buttonFlag.setTitle("Flag", for: .normal)
-        buttonFlag.setTitleColor(UIColor(named: "linkColor"), for: .normal)
+        buttonLeft.setTitle("Stop", for: .normal)
+//        buttonFlag.setTitleColor(UIColor(named: "linkColor"), for: .normal)
         
-        buttonPause.setTitle("Pause", for: .normal)
-        buttonPause.setTitleColor(UIColor(named: "halloweenColor"), for: .normal)
+        buttonRight.setTitle("Lap", for: .normal)
+//        buttonPause.setTitleColor(UIColor(named: "halloweenColor"), for: .normal)
         
         curState = .Play
     }
@@ -91,13 +128,13 @@ class ViewController: UIViewController {
     func onPause() {
         timerEnd()
         
-        buttonFlag.setTitle("Stop", for: .normal)
-        buttonFlag.setTitleColor(UIColor(named: "systemRedColor"), for: .normal)
+        buttonLeft.setTitle("Start", for: .normal)
+//        buttonFlag.setTitleColor(UIColor(named: "systemRedColor"), for: .normal)
         
-        buttonPause.setTitle("Play", for: .normal)
-        buttonPause.setTitleColor(UIColor(named: "linkColor"), for: .normal)
+        buttonRight.setTitle("Reset", for: .normal)
+//        buttonPause.setTitleColor(UIColor(named: "linkColor"), for: .normal)
         
-        curState = .Pause
+        curState = .Stop
     }
     
     private func timerStart( ){
@@ -128,10 +165,10 @@ extension ViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stopwatchFlag") as! StopwatchFlagCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tablecellFlagStopWatch") as! StopWatchFlag
         let data = flags[indexPath.row]
         cell.index.text = "\(data.index)"
-        cell.timeDifference.text = "+\(formatTimeLabel(timeEllapsed: data.timeDifference))"
+        cell.timeDifference.text = "+\(formatTimeLabel(timeEllapsed: data.timeDiff))"
         cell.flagTime.text = "\(formatTimeLabel(timeEllapsed: data.flagTime))"
         return cell
     }
