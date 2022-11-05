@@ -40,15 +40,7 @@ class ViewController: UIViewController {
         buttonLeft.setTitle("Start", for: .normal)
         buttonRight.setTitle("Lap", for: .normal)
         stackButtonsFlagPause.isHidden = false
-        // Do any additional setup after loading the view.
     }
-
-//    @IBAction func onStartButtonClicked(_ sender: Any) {
-//        timerStart()
-//        buttonStart.isHidden = true
-//        stackButtonsFlagPause.isHidden = false
-//        curState = .Play
-//    }
     
     
     @IBAction func onLeftButtonClicked(_ sender: Any) {
@@ -83,44 +75,13 @@ class ViewController: UIViewController {
         tableFlags.reloadData()
     }
     
-//    @IBAction func onFlagButtonClicked(_ sender: Any) {
-//        if curState == .Play {
-//            var timeGap = 0
-//            if let firstRow = flags.first {
-//                timeGap = timeElapsed - firstRow.timeDiff
-//            }
-//            flags.insert(Flag(index: flags.count, timeDiff: timeGap, flagTime: timeElapsed), at: 0)
-//        } else {
-//            // Click on Stop button
-//            timerEnd()
-//            timeElapsed = 0
-//            buttonStart.isHidden = false
-//            stackButtonsFlagPause.isHidden = true
-//            curState = .Stop
-//            labelClock.text = "00:00:00"
-//            flags.removeAll()
-//        }
-//
-//        tableFlags.reloadData()
-//
-//    }
-    
-//    @IBAction func onPauseButtonClicked(_ sender: Any) {
-//        if curState == .Play{
-//            onPause()
-//        } else {
-//            onPlay()
-//        }
-//    }
     
     func onPlay() {
         timerStart()
         
         buttonLeft.setTitle("Stop", for: .normal)
-//        buttonFlag.setTitleColor(UIColor(named: "linkColor"), for: .normal)
         
         buttonRight.setTitle("Lap", for: .normal)
-//        buttonPause.setTitleColor(UIColor(named: "halloweenColor"), for: .normal)
         
         curState = .Play
     }
@@ -129,10 +90,8 @@ class ViewController: UIViewController {
         timerEnd()
         
         buttonLeft.setTitle("Start", for: .normal)
-//        buttonFlag.setTitleColor(UIColor(named: "systemRedColor"), for: .normal)
         
         buttonRight.setTitle("Reset", for: .normal)
-//        buttonPause.setTitleColor(UIColor(named: "linkColor"), for: .normal)
         
         curState = .Stop
     }
